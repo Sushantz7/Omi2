@@ -5,14 +5,35 @@ import datetime
 from .models import *
 from .utils import cookieCart,cartData,guestOrder
 
+# def store(request):
+#     data=cartData(request)
+#     cartItems=data['cartItems']
+
+
+#     products=Product.objects.all()
+#     context={'hello': products,'cartItems':cartItems}
+#     return render(request,'store/store.html',context)
+from .models import Product, Category
+
 def store(request):
-    data=cartData(request)
-    cartItems=data['cartItems']
+    data = cartData(request)
+    cartItems = data['cartItems']
 
+    category_id = request.GET.get('category')
+    if category_id:
+        products = Product.objects.filter(category_id=category_id)
+    else:
+        products = Product.objects.all()
 
-    products=Product.objects.all()
-    context={'hello': products,'cartItems':cartItems}
-    return render(request,'store/store.html',context)
+    categories = Category.objects.all()
+
+    context = {
+        'hello': products,
+        'cartItems': cartItems,
+        'categories': categories,
+        'selected_category': int(category_id) if category_id else 0,
+    }
+    return render(request, 'store/store.html', context)
 
 def cart(request):
 
@@ -100,3 +121,9 @@ def processOrder(request):
             )
 
     return JsonResponse('Payment Complete!', safe=False)
+
+def intro(request):
+    return render(request,'store/intro.html')
+
+def about(request):
+    return render(request,'store/About_us.html')

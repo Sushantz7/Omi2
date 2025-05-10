@@ -9,8 +9,14 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
     
+class Category(models.Model):
+    name=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 class Product(models.Model):
+    category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name='products',null=True)
     name= models.CharField(max_length=200, null= True)
     price= models.DecimalField(max_digits=7,decimal_places=2)
     digital=models.BooleanField(default=False, null=True, blank=False)
@@ -84,3 +90,4 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+    

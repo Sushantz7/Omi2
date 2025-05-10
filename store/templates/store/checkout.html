@@ -69,15 +69,6 @@
             document.getElementById('shipping-info').innerHTML=''
         }
 
-        {% comment %} if(user != 'AnonymousUser'){
-            document.getElementById('user-info').innerHTML = ''
-        }
-
-        if(shipping=='False' && user != 'AnonymousUser'){
-            document.getElementById('form-wrapper').classList.add('hidden');
-            document.getElementById('payment-info').classList.remove('hidden');
-        } {% endcomment %}
-
         var form=document.getElementById('form')
         csrftoken=form.getElementsByTagName("input")[0].value
         console.log('Newtoken:',form.getElementsByTagName("input")[0].value)

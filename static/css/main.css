@@ -97,3 +97,21 @@ h1,h2,h3,h4,h5,h6{
 .hidden{
 	display: none!important;
 }
+
+#logo{
+	width: 50px;
+	margin-right: 5px;
+	border-radius: 45%;
+}
+
+.img-icon {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.icon-caption {
+  font-size: 1rem;
+  color: #444;
+  margin-top: 0.5rem;
+}
