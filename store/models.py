@@ -19,7 +19,7 @@ class Product(models.Model):
     category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name='products',null=True)
     name= models.CharField(max_length=200, null= True)
     price= models.DecimalField(max_digits=7,decimal_places=2)
-    digital=models.BooleanField(default=False, null=True, blank=False)
+    unit = models.CharField(max_length=50,default="KG")
     image=models.ImageField(null=True, blank=True)
 
     def __str__(self):
